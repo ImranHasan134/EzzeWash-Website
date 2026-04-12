@@ -4,15 +4,15 @@
 
 // ---- Data ----
 const SERVICES = [
-  { id: 'wash-fold', name: 'Regular Wash & Fold', img: 'assets/services/wash_fold.webp', price: 80, unit: '/kg', badge: 'Popular', desc: 'Basic washing and folding for everyday clothes. Gentle on fabrics, tough on dirt.' },
-  { id: 'comfort-clean', name: 'Comfort Clean & Wash', img: 'assets/services/comfort_clean.webp', price: 120, unit: '/kg', badge: 'Premium', desc: 'Deep-clean wash with extra fabric softener for maximum comfort and freshness.' },
-  { id: 'shoe-clean', name: 'Shoe Clean', img: 'assets/services/shoe_clean.webp', price: 150, unit: '/pair', badge: '', desc: 'Professional shoe cleaning for sneakers, leather shoes, and casual footwear.' },
-  { id: 'suit-wash', name: 'Suit Wash', img: 'assets/services/suit_wash.webp', price: 300, unit: '/piece', badge: 'Delicate', desc: 'Careful hand-finish suit cleaning preserving structure and fabric integrity.' },
-  { id: 'steam-clean', name: 'Steam Clean', img: 'assets/services/steam_clean.webp', price: 100, unit: '/piece', badge: '', desc: 'High-pressure steam treatment to sanitize, deodorize, and refresh garments.' },
-  { id: 'iron-press', name: 'Iron Press', img: 'assets/services/iron_press.webp', price: 50, unit: '/piece', badge: '', desc: 'Crisp and professional ironing service for shirts, trousers, sarees, and more.' },
-  { id: 'express', name: 'Express Service', img: 'assets/services/express.webp', price: 200, unit: '/kg', badge: '24hr', desc: 'Rush service with 24-hour turnaround. Perfect for urgent needs.' },
-  { id: 'delicate-care', name: 'Delicate Care', img: 'assets/services/delicate_care.webp', price: 180, unit: '/piece', badge: 'Gentle', desc: 'Special handling for silk, chiffon, lace, and other delicate fabrics.' },
-  { id: 'dry-clean', name: 'Dry Clean Standard', img: 'assets/services/dry_clean.webp', price: 250, unit: '/piece', badge: 'Pro', desc: 'Industry-standard dry cleaning for garments requiring chemical solvents.' },
+  { id: 'wash-fold', name: 'Regular Wash & Fold', img: 'assets/services/wash_fold.webp', price: 15, unit: '/piece', badge: 'Popular', desc: 'Basic washing and folding for everyday clothes. Gentle on fabrics, tough on dirt.' },
+  { id: 'comfort-clean', name: 'Comfort Clean & Wash', img: 'assets/services/comfort_clean.webp', price: 200, unit: '/piece', badge: 'Premium', desc: 'Deep-clean wash with extra fabric softener for maximum comfort and freshness.' },
+  { id: 'shoe-clean', name: 'Shoe Clean', img: 'assets/services/shoe_clean.webp', price: 120, unit: '/pair', badge: '', desc: 'Professional shoe cleaning for sneakers, leather shoes, and casual footwear.' },
+  { id: 'suit-wash', name: 'Suit Wash', img: 'assets/services/suit_wash.webp', price: 100, unit: '/piece', badge: 'Delicate', desc: 'Careful hand-finish suit cleaning preserving structure and fabric integrity.' },
+  { id: 'steam-clean', name: 'Steam Clean', img: 'assets/services/steam_clean.webp', price: 50, unit: '/piece', badge: '', desc: 'High-pressure steam treatment to sanitize, deodorize, and refresh garments.' },
+  { id: 'iron-press', name: 'Iron Press', img: 'assets/services/iron_press.webp', price: 10, unit: '/piece', badge: '', desc: 'Crisp and professional ironing service for shirts, trousers, sarees, and more.' },
+  { id: 'express', name: 'Express Service', img: 'assets/services/express.webp', price: 150, unit: '/piece', badge: '24hr', desc: 'Rush service with 24-hour turnaround. Perfect for urgent needs.' },
+  { id: 'delicate-care', name: 'Delicate Care', img: 'assets/services/delicate_care.webp', price: 200, unit: '/piece', badge: 'Gentle', desc: 'Special handling for silk, chiffon, lace, and other delicate fabrics.' },
+  { id: 'dry-clean', name: 'Dry Clean Standard', img: 'assets/services/dry_clean.webp', price: 80, unit: '/piece', badge: 'Pro', desc: 'Industry-standard dry cleaning for garments requiring chemical solvents.' },
 ];
 
 const PROMOS = [
