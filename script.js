@@ -16,13 +16,13 @@ const SERVICES = [
 ];
 
 const PROMOS = [
-  { name: 'BlueLock Power', img: 'assets/promos/bluelock.webp', code: 'BLUELOCK10', discount: '10% OFF', desc: 'Power up your wash! 10% off all services.', expiry: 'Expires: 20 April 2026', isGif: false, tag: '10% OFF' },
-  { name: 'Zenitsu Thunder Splash', img: 'assets/promos/zenitsu.webp', code: 'THUNDER15', discount: '15% OFF', desc: 'Lightning-speed wash deal! 15% off on Express.', expiry: 'Expires: 15 April 2026', isGif: false, tag: '15% OFF' },
+  { name: 'BlueLock Power', img: 'assets/promos/bluelock.gif', code: 'BLUELOCK10', discount: '10% OFF', desc: 'Power up your wash! 10% off all services.', expiry: 'Expires: 20 April 2026', isGif: false, tag: '10% OFF' },
+  { name: 'Zenitsu Thunder Splash', img: 'assets/promos/zenitsu.gif', code: 'THUNDER15', discount: '15% OFF', desc: 'Lightning-speed wash deal! 15% off on Express.', expiry: 'Expires: 15 April 2026', isGif: false, tag: '15% OFF' },
   { name: 'Developer Special', img: 'assets/promos/developer.gif', code: 'DEVSPECIAL', discount: '20% OFF', desc: 'Exclusive dev promo! 20% off any order.', expiry: 'Expires: 23 April 2026', isGif: true, tag: '20% OFF' },
   { name: 'Batman Paglu Splash', img: 'assets/promos/batman.gif', code: 'BATMAN25', discount: '25% OFF', desc: "Gotham's freshest deal! 25% off premium services.", expiry: 'Expires: 20 April 2026', isGif: true, tag: '25% OFF' },
-  { name: 'DemonSlayer 1st Form', img: 'assets/promos/demonslayer.webp', code: 'SLAYER12', discount: '12% OFF', desc: 'Slice through stains! 12% off Dry Clean.', expiry: 'Expires: 15 April 2026', isGif: false, tag: '12% OFF' },
-  { name: 'Romonir Boishakh', img: 'assets/promos/boishakh.webp', code: 'BOISHAKH20', discount: '20% OFF', desc: 'Celebrate the new year fresh! 20% off all washes.', expiry: 'Expires: 14 April 2026', isGif: false, tag: 'Seasonal' },
-  { name: 'TopLift Shoot', img: 'assets/promos/toplift.webp', code: 'TOPLIFT08', discount: '8% OFF', desc: 'Reach the top with clean clothes! 8% off suits.', expiry: 'Expires: 25 April 2026', isGif: false, tag: '8% OFF' },
+  { name: 'DemonSlayer 1st Form', img: 'assets/promos/demonslayer.gif', code: 'SLAYER12', discount: '12% OFF', desc: 'Slice through stains! 12% off Dry Clean.', expiry: 'Expires: 15 April 2026', isGif: false, tag: '12% OFF' },
+  { name: 'Romonir Boishakh', img: 'assets/promos/boishakh.gif', code: 'BOISHAKH20', discount: '20% OFF', desc: 'Celebrate the new year fresh! 20% off all washes.', expiry: 'Expires: 14 April 2026', isGif: false, tag: 'Seasonal' },
+  { name: 'TopLift Shoot', img: 'assets/promos/toplift.gif', code: 'TOPLIFT08', discount: '8% OFF', desc: 'Reach the top with clean clothes! 8% off suits.', expiry: 'Expires: 25 April 2026', isGif: false, tag: '8% OFF' },
 ];
 
 const PROMO_CODES = {
