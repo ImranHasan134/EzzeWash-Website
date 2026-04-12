@@ -260,12 +260,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .feature-item i { color: var(--blue-2); font-size: 1.1rem; }
 
-/* ---------- Home Promos Section ---------- */
-.home-promos-section { margin: 3rem 0; }
-.section-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
-.section-header.center { justify-content: center; flex-direction: column; }
-.see-all-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--blue-2); font-weight: 600; font-size: 0.9rem; transition: gap 0.2s; }
-.see-all-link:hover { gap: 0.7rem; }
 
 /* ---------- Why Section ---------- */
 .why-section { margin: 3rem 0; }
