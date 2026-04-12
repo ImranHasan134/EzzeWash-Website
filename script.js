@@ -457,7 +457,7 @@ const BOT_RESPONSES = {
   'payment': 'We accept Cash on Delivery (COD), bKash, Nagad, and all major credit/debit cards! 💳',
   'price': 'Our prices start at ৳50 for Iron Press and go up to ৳300 for Suit Wash. Check the Services section for full pricing! 💰',
   'delivery': 'We offer free pickup & delivery within Dhaka city! Schedule in the Order section or via the app. 🚚',
-  'cancel': 'You can cancel orders up to 2 hours before pickup for free. Contact support@ezzewash.com for help! 📧',
+  'cancel': 'You can cancel orders up to 2 hours before pickup for free. Contact washezze@gmail.com for help! 📧',
 };
 
 function openBubbleBot() {
@@ -491,7 +491,7 @@ function sendBotMsg() {
   setTimeout(() => {
     hideBotTyping();
     const key = Object.keys(BOT_RESPONSES).find(k => msg.toLowerCase().includes(k));
-    const reply = key ? BOT_RESPONSES[key] : "I'm not sure about that. For detailed help, please contact our support team at support@ezzewash.com or call +880 1700-3993. 😊";
+    const reply = key ? BOT_RESPONSES[key] : "I'm not sure about that. For detailed help, please contact our support team at washezze@gmail.com or call +880 1700-3993. 😊";
     addBotMessage(reply, 'bot');
   }, 1200);
 }
