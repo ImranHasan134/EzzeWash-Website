@@ -132,11 +132,3 @@ ezzewash/
 ## ⭐ Support
 
 If you find this project helpful or inspiring, consider giving it a **star ⭐ on GitHub**!
-
----
-
-## 📌 Notes
-
-- Built without frameworks for performance optimization
-- Designed with modern UI/UX principles
-- Ideal for frontend portfolio projects
