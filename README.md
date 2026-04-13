@@ -81,7 +81,7 @@ No installation needed — pure frontend project.
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/your-username/ezzewash.git
+git clone https://github.com/imranhasan134/ezzewash-website.git
 ```
 
 ### 2️⃣ Navigate to Folder
