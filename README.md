@@ -4,7 +4,6 @@
   <a href="https://ezzewash.vercel.app/">
     <img src="https://img.shields.io/badge/Live_Demo-View_Website-blue?style=for-the-badge" />
   </a>
-  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" />
 </p>
 
 ---
