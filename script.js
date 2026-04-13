@@ -1,5 +1,6 @@
 /* ============================================================
    EZZEWASH — Full Website JavaScript
+   Upgraded: Dynamic Bubbles, Smooth Transitions
    ============================================================ */
 
 // ---- Data ----
@@ -49,6 +50,7 @@ let orderData = { service: null, store: null, scheduleType: 'pickup', qty: 1, we
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initBubbles(); // Add global dynamic background bubbles
   initNav();
   renderServicesSection();
   renderServiceSelectGrid();
@@ -60,6 +62,35 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrderSummary();
   setMinDate();
 });
+
+// ============================================================
+// DYNAMIC BACKGROUND BUBBLES
+// ============================================================
+function initBubbles() {
+  const container = document.getElementById('bg-bubbles');
+  if (!container) return;
+  const bubbleCount = window.innerWidth > 768 ? 15 : 8; // Less bubbles on mobile for performance
+  for (let i = 0; i < bubbleCount; i++) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bg-bubble';
+    
+    // Randomize size between 30px and 100px
+    const size = Math.random() * 70 + 30;
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    
+    // Randomize horizontal position
+    bubble.style.left = `${Math.random() * 100}vw`;
+    
+    // Randomize animation duration between 12s and 25s
+    bubble.style.animationDuration = `${Math.random() * 13 + 12}s`;
+    
+    // Randomize animation delay
+    bubble.style.animationDelay = `${Math.random() * 10}s`;
+    
+    container.appendChild(bubble);
+  }
+}
 
 // ============================================================
 // THEME
@@ -115,7 +146,7 @@ function updateActiveNav() {
 
 function scrollToSection(id) {
   const el = document.getElementById(id);
-  if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+  if (el) window.scrollTo({ top: el.offsetTop - 75, behavior: 'smooth' });
 }
 
 // ============================================================
@@ -162,16 +193,10 @@ function renderPromos() {
 function initHomePromos() {
   const track = document.getElementById('homePromoTrack');
   if (!track) return;
-  // Duplicate for infinite scroll feel
+  // CSS based infinite scroll logic is handled in style.css or embedded logic
+  // For safety, providing the duplicate nodes if the container exists
   const cards = PROMOS.map(p => promoCardHTML(p, true)).join('');
-  track.innerHTML = cards + cards;
-  // Auto scroll
-  let scrollAmount = 0;
-  setInterval(() => {
-    scrollAmount += 1;
-    if (scrollAmount > track.scrollWidth / 2) scrollAmount = 0;
-    track.style.transform = `translateX(-${scrollAmount}px)`;
-  }, 20);
+  track.innerHTML = cards + cards + cards;
 }
 
 function promoCardHTML(p, small = false) {
@@ -185,12 +210,12 @@ function promoCardHTML(p, small = false) {
       <div class="promo-card-body">
         <h3>${p.name}</h3>
         <div class="promo-discount">${p.discount}</div>
-        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem">${p.desc}</p>
+        <p style="font-size:0.85rem;font-weight:500;color:var(--text-muted);margin-bottom:0.5rem">${p.desc}</p>
         <div class="promo-code-display" onclick="copyPromoCode('${p.code}', this)">
           <span>${p.code}</span>
           <i class="fas fa-copy"></i>
         </div>
-        <div class="promo-expiry"><i class="fas fa-clock" style="color:var(--warning);margin-right:4px"></i>${p.expiry}</div>
+        <div class="promo-expiry"><i class="fas fa-clock" style="color:var(--warning);margin-right:6px"></i>${p.expiry}</div>
       </div>
     </div>
   `;
@@ -201,13 +226,14 @@ function copyPromoCode(code, el) {
   const icon = el.querySelector('i');
   icon.className = 'fas fa-check';
   icon.style.color = 'var(--success)';
+  icon.style.transform = 'scale(1.2)';
   showToast('Promo code copied!', 'success');
-  setTimeout(() => { icon.className = 'fas fa-copy'; icon.style.color = ''; }, 2000);
+  setTimeout(() => { icon.className = 'fas fa-copy'; icon.style.color = ''; icon.style.transform = 'scale(1)'; }, 2000);
 }
 
 function scrollPromos(dir) {
   const track = document.getElementById('promoTrack');
-  if (track) track.scrollLeft += dir * 300;
+  if (track) track.scrollBy({ left: dir * 320, behavior: 'smooth' });
 }
 
 // ============================================================
@@ -277,6 +303,8 @@ function changeWeight(delta) {
 
 function fillPromo(code) {
   document.getElementById('promoInput').value = code;
+  // auto apply to make it more premium
+  applyPromo();
 }
 
 function applyPromo() {
@@ -328,12 +356,12 @@ function updateFinalSummary() {
   const s = orderData;
   const payLabel = { cod: 'Cash on Delivery', bkash: 'bKash', card: 'Credit/Debit Card', nagad: 'Nagad' };
   el.innerHTML = `
-    <div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.5rem;font-weight:700">Order Summary</div>
-    <div style="display:grid;gap:0.4rem;font-size:0.88rem">
+    <div style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.75rem;font-weight:700;font-family:'Alexandria',sans-serif;">Order Summary</div>
+    <div style="display:grid;gap:0.5rem;font-size:0.95rem;font-weight:500;">
       ${s.service ? `<div style="display:flex;justify-content:space-between"><span>${s.service.name}</span><span>৳${s.subtotal}</span></div>` : ''}
-      ${s.discount ? `<div style="display:flex;justify-content:space-between;color:var(--success)"><span>Promo (${s.promoCode})</span><span>−৳${s.discount}</span></div>` : ''}
-      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1rem;border-top:1px solid var(--border);padding-top:0.5rem;margin-top:0.25rem"><span>Total</span><span style="color:var(--blue-2)">৳${s.total || 0}</span></div>
-      <div style="color:var(--text-muted);font-size:0.8rem">Payment: ${payLabel[s.paymentMethod] || 'COD'}</div>
+      ${s.discount ? `<div style="display:flex;justify-content:space-between;color:var(--success);font-weight:600;"><span>Promo (${s.promoCode})</span><span>−৳${s.discount}</span></div>` : ''}
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.15rem;border-top:1.5px dashed var(--border);padding-top:0.75rem;margin-top:0.25rem;font-family:'Alexandria',sans-serif;"><span>Total</span><span style="color:var(--blue-2)">৳${s.total || 0}</span></div>
+      <div style="color:var(--text-muted);font-size:0.85rem;margin-top:0.2rem;font-weight:600;">Payment: ${payLabel[s.paymentMethod] || 'COD'}</div>
     </div>
   `;
 }
@@ -374,8 +402,8 @@ function placeOrder() {
     s.store ? `<div class="success-detail-chip">📍 ${s.store}</div>` : '',
     `<div class="success-detail-chip">📦 ${s.qty} item(s)</div>`,
     `<div class="success-detail-chip">${payLabel[s.paymentMethod]}</div>`,
-    `<div class="success-detail-chip">💰 Total: ৳${s.total || 0}</div>`,
-    s.promoCode ? `<div class="success-detail-chip">🏷️ ${s.promoCode}</div>` : '',
+    `<div class="success-detail-chip" style="border-color:var(--blue-2);color:var(--blue-2);">💰 Total: ৳${s.total || 0}</div>`,
+    s.promoCode ? `<div class="success-detail-chip" style="border-color:var(--success);color:var(--success);">🏷️ ${s.promoCode}</div>` : '',
   ].join('');
   document.querySelectorAll('.order-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('stepSuccess').classList.add('active');
@@ -487,13 +515,13 @@ function sendBotMsg() {
   if (!msg) return;
   input.value = '';
   addBotMessage(msg, 'user');
-  setTimeout(() => showBotTyping(), 200);
+  setTimeout(() => showBotTyping(), 300);
   setTimeout(() => {
     hideBotTyping();
     const key = Object.keys(BOT_RESPONSES).find(k => msg.toLowerCase().includes(k));
     const reply = key ? BOT_RESPONSES[key] : "I'm not sure about that. For detailed help, please contact our support team at washezze@gmail.com or call +880 1700-3993. 😊";
     addBotMessage(reply, 'bot');
-  }, 1200);
+  }, 1400);
 }
 
 function addBotMessage(text, role) {
@@ -517,14 +545,19 @@ function showBotTyping() {
 function hideBotTyping() { if (typingEl) { typingEl.remove(); typingEl = null; } }
 
 // ============================================================
-// SCROLL REVEAL
+// SCROLL REVEAL (Enhanced)
 // ============================================================
 function initScrollReveal() {
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal, .animate-scale-in, .store-card').forEach(el => {
-    el.classList.add('reveal');
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        observer.unobserve(e.target); 
+      } 
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  
+  document.querySelectorAll('.reveal').forEach(el => {
     observer.observe(el);
   });
 }
@@ -547,7 +580,7 @@ function initCounters() {
 
 function animateCounter(el) {
   const target = parseInt(el.dataset.target);
-  const duration = 1800;
+  const duration = 2000;
   const step = target / (duration / 16);
   let current = 0;
   const timer = setInterval(() => {
@@ -568,48 +601,5 @@ function showToast(message, type = 'success') {
   toast.className = `toast ${type}`;
   toast.innerHTML = `<i class="fas ${icons[type] || icons.success}"></i><span>${message}</span>`;
   document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
+  setTimeout(() => { if(toast) toast.remove() }, 3400); // Wait for animations to finish
 }
-
-// ============================================================
-// HOME PROMOS — CSS-based infinite scroll fix
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
-  const track = document.getElementById('homePromoTrack');
-  if (!track) return;
-  // Use CSS animation instead of JS transform for better performance
-  track.style.transform = '';
-  track.style.animation = 'none';
-  
-  // Re-render with auto-scroll CSS approach
-  track.innerHTML = '';
-  const cards = PROMOS.map(p => promoCardHTML(p, true)).join('');
-  track.innerHTML = cards + cards + cards;
-  
-  // Apply CSS animation
-  const style = document.createElement('style');
-  
-  style.textContent = `
-  #homePromoTrack {
-    display: flex;
-    gap: 1.25rem;
-    width: max-content;
-    animation: homeScroll 30s linear infinite;
-  }
-
-  @keyframes homeScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  #homePromoTrack:hover {
-    animation-play-state: paused;
-  }
-
-  #homePromoTrack .promo-card.small {
-    flex: 0 0 268px;
-  }
-`;
-
-  document.head.appendChild(style);
-});
