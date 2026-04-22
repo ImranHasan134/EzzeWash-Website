@@ -475,13 +475,13 @@ function submitContactForm() {
 // BUBBLE BOT
 // ============================================================
 const BOT_RESPONSES = {
-  'track my order': 'You can track your order using your Order ID in the EzzeWash app. Download it here: https://drive.usercontent.google.com/download?id=1NyCaQkedtT0K8KiEoQ11Fx4vqBwW4VWZ&export=download&authuser=0&confirm=t&uuid=411931e7-a6fd-4d3f-98b8-d50b50c2dac1&at=ALBwUgn8sQH1ObMnY7rw1zHqls9A%3A1776776234128',
+  'track my order': 'You can track your order using your Order ID in the EzzeWash app. Download it here: https://drive.google.com/file/d/1NyCaQkedtT0K8KiEoQ11Fx4vqBwW4VWZ/view?usp=sharing',
   'view services': 'We offer 9 premium services: Regular Wash & Fold, Comfort Clean, Shoe Clean, Suit Wash, Steam Clean, Iron Press, Express (12hr), Delicate Care, and Dry Clean Standard. Check them all in the Services section! 🧺',
   'current promos': 'Hot deals available now:\n🔥 BLUELOCK10 – 10% OFF\n⚡ THUNDER15 – 15% OFF Express\n👨‍💻 DEVSPECIAL – 20% OFF\n🦇 BATMAN25 – 25% OFF Premium\n🌸 BOISHAKH20 – 20% Seasonal\n...and more in the Promos section!',
   'store locations': '📍 We have 4 stores:\n1. Ezzewash Mirpur\n2. Ezzewash Gulshan\n3. Ezzewash Dhanmondi\n4. Ezzewash Chadd Uddan\nAll open 8AM–9PM daily!',
   'hello': "Hello! 👋 I'm Bubble Bot, EzzeWash's AI assistant! How can I help you today?",
   'hi': "Hi there! 😊 I'm Bubble Bot! Ask me about services, promos, stores, or your order!",
-  'download app': 'Download the EzzeWash app here: https://drive.usercontent.google.com/download?id=1NyCaQkedtT0K8KiEoQ11Fx4vqBwW4VWZ&export=download&authuser=0&confirm=t&uuid=411931e7-a6fd-4d3f-98b8-d50b50c2dac1&at=ALBwUgn8sQH1ObMnY7rw1zHqls9A%3A1776776234128 📱',
+  'download app': 'Download the EzzeWash app here: https://drive.google.com/file/d/1NyCaQkedtT0K8KiEoQ11Fx4vqBwW4VWZ/view?usp=sharing 📱',
   'payment': 'We accept Cash on Delivery (COD), bKash, Nagad, and all major credit/debit cards! 💳',
   'price': 'Our prices start at ৳50 for Iron Press and go up to ৳300 for Suit Wash. Check the Services section for full pricing! 💰',
   'delivery': 'We offer free pickup & delivery within Dhaka city! Schedule in the Order section or via the app. 🚚',
