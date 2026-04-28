@@ -1,7 +1,7 @@
 /* ============================================================
    EZZEWASH — Full Website Stylesheet
    Theme: White & Blue, Gradient Accent, Light/Dark Toggle
-   Upgraded: Premium Typography, Glassmorphism, Advanced Animations
+   Upgraded: Fluid Responsive Typography, Drag Sliders, Glassmorphism
    ============================================================ */
 
 /* ---------- CSS Variables ---------- */
@@ -93,7 +93,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
-[data-theme="dark"] .glass-panel { border: 1px solid rgba(255, 255, 255, 0.05); }
+[data-theme="dark"] .glass-panel { border: 1px solid rgba(255, 255, 255, 0.08); }
 
 /* ---------- Dynamic Bubbles Container ---------- */
 .bg-bubbles {
@@ -102,12 +102,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .bg-bubble {
   position: absolute; bottom: -100px;
-  /* Increased the blue opacity from 0.15 to 0.4 for much better visibility */
   background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(0, 113, 243, 0.679));
-  /* Added a subtle blue tint to the border instead of pure white */
   border: 1px solid rgba(0, 112, 243, 0.25);
   border-radius: 50%;
-  /* Darkened the outer blue shadow to make them pop off the background */
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 8px 20px rgba(0, 112, 243, 0.2);
   animation: floatUp linear infinite;
 }
@@ -192,7 +189,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .outline-btn { background: var(--surface-trans); color: var(--blue-2); border: 2px solid var(--blue-2); backdrop-filter: blur(10px); }
 .outline-btn:hover { background: var(--blue-2); color: white; transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0, 112, 243, 0.2); }
 
-/* Adaptive Order Now Button Fix */
 .nav-cta { 
   padding: 0.55rem 1.4rem; 
   font-size: 0.9rem;
@@ -208,14 +204,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================================
-   SECTIONS
+   SECTIONS & FLUID SPACING
    ============================================================ */
 .section {
-  min-height: 100vh; padding: 8rem 2rem 4rem;
+  min-height: 100vh; 
+  /* Dynamic Fluid Padding */
+  padding: clamp(6rem, 10vw, 8rem) clamp(1.2rem, 5vw, 2rem) clamp(3rem, 5vw, 4rem);
   max-width: 1400px; margin: 0 auto; position: relative; z-index: 1;
 }
 
-.section-header { margin-bottom: 3.5rem; }
+.section-header { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section-header.center { text-align: center; }
 .section-badge {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -227,11 +225,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .section-title {
   font-family: 'Alexandria', sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800; line-height: 1.2;
   color: var(--text-primary); margin-bottom: 1rem;
 }
-.section-sub { font-size: 1.1rem; color: var(--text-secondary); max-width: 650px; line-height: 1.7; }
+.section-sub { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); max-width: 650px; line-height: 1.7; }
 .section-header.center .section-sub { margin: 0 auto; }
 
 /* ============================================================
@@ -239,7 +237,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ============================================================ */
 .hero {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: center;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
   min-height: calc(100vh - 75px);
   padding-top: 2rem;
 }
@@ -267,14 +265,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--text-primary); margin-bottom: 1.25rem;
 }
 
-.hero-sub { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 520px; line-height: 1.7; }
+.hero-sub { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 520px; line-height: 1.7; }
 
 .hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
-.hero-stats { display: flex; align-items: center; gap: 2rem; }
+.hero-stats { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2rem); flex-wrap: wrap; }
 .stat { text-align: center; }
-.stat-num { font-family: 'Alexandria', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--blue-2); }
-.stat span:not(.stat-num) { font-family: 'Alexandria', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--blue-2); }
+.stat-num { font-family: 'Alexandria', sans-serif; font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 800; color: var(--blue-2); }
+.stat span:not(.stat-num) { font-family: 'Alexandria', sans-serif; font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 800; color: var(--blue-2); }
 .stat p { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 0.3rem; }
 .stat-divider { width: 1.5px; height: 50px; background: var(--border); }
 
@@ -284,9 +282,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%; 
   max-width: 650px;
   transform: rotateY(-5deg) rotateX(2deg);
-  transition: transform 0.5s ease;
+  transition: transform 0.2s ease-out; /* Kept short for smooth JS Parallax */
 }
-.hero-img-wrap:hover { transform: rotateY(0deg) rotateX(0deg); }
 
 .hero-img-wrap img { 
   width: 100%; 
@@ -324,8 +321,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .feature-item i { color: var(--blue-2); font-size: 1.2rem; background: var(--bg-3); padding: 0.5rem; border-radius: 50%; }
 
 /* ---------- Why Section ---------- */
-.why-section { margin: 5rem 0; }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.why-section { margin: clamp(3rem, 6vw, 5rem) 0; }
+.why-grid { 
+  display: grid; 
+  /* Dynamic Grid Minimums */
+  grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr)); 
+  gap: clamp(1.5rem, 3vw, 2rem); 
+  margin-top: 3rem; 
+}
 .why-card {
   background: var(--surface-trans); backdrop-filter: blur(10px);
   border: 1.5px solid var(--border);
@@ -338,12 +341,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .why-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
 
 /* ---------- Bubble Bot Section ---------- */
-.bubblebot-section { margin: 5rem 0; }
+.bubblebot-section { margin: clamp(3rem, 6vw, 5rem) 0; }
 .bubblebot-card {
   position: relative; overflow: hidden;
-  border-radius: 32px; padding: 4rem;
+  border-radius: 32px; padding: clamp(2rem, 5vw, 4rem);
   display: grid; grid-template-columns: 1fr auto;
-  gap: 4rem; align-items: center;
+  gap: clamp(2rem, 4vw, 4rem); align-items: center;
   box-shadow: var(--shadow-lg);
 }
 .bubblebot-glow {
@@ -353,20 +356,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 50%; pointer-events: none;
 }
 .bubblebot-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--gradient); color: white; padding: 0.5rem 1.2rem; border-radius: 99px; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.2rem; box-shadow: 0 4px 15px rgba(0,112,243,0.3); }
-.bubblebot-card h2 { font-family: 'Alexandria', sans-serif; font-size: 2.6rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1; }
+.bubblebot-card h2 { font-family: 'Alexandria', sans-serif; font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1; }
 .bubblebot-card p { color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; font-size: 1.05rem; line-height: 1.7; }
-.bubblebot-features { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 2.5rem; }
+.bubblebot-features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 2.5rem; }
 .bubblebot-features li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); }
 .bubblebot-features li i { color: var(--success); font-size: 1.1rem; }
-.bubblebot-img img { width: 240px; height: 240px; border-radius: 28px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 82, 204, 0.25); border: 4px solid var(--surface); }
+.bubblebot-img img { width: clamp(180px, 20vw, 240px); height: clamp(180px, 20vw, 240px); border-radius: 28px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 82, 204, 0.25); border: 4px solid var(--surface); }
 
 /* ---------- App Download Banner ---------- */
 .app-download-banner {
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, #002B73 0%, #0052CC 40%, #0070F3 80%, #3B9BFF 100%);
-  border-radius: 32px; padding: 5rem 3rem;
-  margin: 5rem 0 2rem;
-  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4rem;
+  border-radius: 32px; padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+  margin: clamp(3rem, 6vw, 5rem) 0 2rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: clamp(2rem, 5vw, 4rem);
   color: white; box-shadow: 0 20px 50px rgba(0, 82, 204, 0.3);
 }
 .app-banner-glow {
@@ -379,13 +382,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .app-banner-badge { display: inline-flex; align-items: center; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 0.45rem 1.2rem; border-radius: 99px; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.3); }
 .app-banner-title { font-family: 'Alexandria', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1.2rem; color: white; line-height: 1.1; }
 .app-banner-title .gradient-text { -webkit-text-fill-color: transparent; background: linear-gradient(90deg,#FFD700,#FFB347); -webkit-background-clip: text; background-clip: text; }
-.app-banner-content p { opacity: 0.95; margin-bottom: 2rem; max-width: 650px; font-size: 1.1rem; line-height: 1.8; }
+.app-banner-content p { opacity: 0.95; margin-bottom: 2rem; max-width: 650px; font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.8; }
 .app-banner-features { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
 .app-banner-features span { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); padding: 0.5rem 1.1rem; border-radius: 99px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.2); }
 .download-btn { background: white !important; color: var(--blue-1) !important; font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 16px; }
 .download-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important; }
 
-/* 4 Screens Showcase & Pill Titles Fix */
+/* 4 Screens Showcase & Pill Titles Fix - DRAGGABLE UI */
 .app-showcase {
   display: flex; 
   flex-wrap: wrap; 
@@ -395,7 +398,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%; 
   z-index: 2; 
   perspective: 1200px;
+  cursor: grab; /* dynamic visual cue */
 }
+.app-showcase.active { cursor: grabbing; }
 
 .app-screen-wrap {
   display: flex; 
@@ -403,10 +408,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center; 
   gap: 1.25rem;
   position: relative;
+  pointer-events: none; /* helps drag mechanics */
 }
 
 .app-screen {
-  width: 230px; 
+  width: clamp(180px, 15vw, 230px); 
   height: auto;
   border-radius: 32px;
   border: 8px solid #0B1120;
@@ -428,14 +434,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0.95;
 }
 
-.app-screen-wrap:hover {
-  z-index: 10;
-}
-
-.app-screen-wrap:hover .app-screen {
-  transform: translateY(-20px) scale(1.05) rotateX(5deg); 
-}
-
+.app-screen-wrap:hover { z-index: 10; }
+.app-screen-wrap:hover .app-screen { transform: translateY(-20px) scale(1.05) rotateX(5deg); }
 .app-screen-wrap:hover .app-screen-title {
   color: var(--blue-2);
   border-color: var(--blue-2);
@@ -481,13 +481,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .order-panel {
   background: var(--surface-trans); backdrop-filter: blur(16px);
   border: 1.5px solid var(--border); box-shadow: var(--shadow-lg);
-  border-radius: 28px; padding: 3rem;
+  border-radius: 28px; padding: clamp(2rem, 5vw, 3rem);
   display: none; animation: fadeSlideIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .order-panel.active { display: block; }
 @keyframes fadeSlideIn { from{opacity:0;transform:translateY(30px) scale(0.98)} to{opacity:1;transform:translateY(0) scale(1)} }
 
-.step-title { font-family: 'Alexandria', sans-serif; font-size: 1.7rem; font-weight: 800; margin-bottom: 2rem; color: var(--text-primary); border-bottom: 2px solid var(--border); padding-bottom: 1rem; }
+.step-title { font-family: 'Alexandria', sans-serif; font-size: clamp(1.4rem, 3vw, 1.7rem); font-weight: 800; margin-bottom: 2rem; color: var(--text-primary); border-bottom: 2px solid var(--border); padding-bottom: 1rem; }
 
 /* Service Select */
 .service-select-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
@@ -505,7 +505,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .service-select-card.selected .service-select-card-info { background: var(--bg-3); }
 
 /* Store Select */
-.store-select-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+.store-select-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
 .store-select-card {
   display: flex; gap: 1.25rem; align-items: center;
   background: var(--surface);
@@ -519,7 +519,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .store-select-info p { font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); }
 
 /* Schedule */
-.schedule-type { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+.schedule-type { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
 .schedule-option {
   background: var(--surface);
   border: 2px solid var(--border); border-radius: 20px;
@@ -532,7 +532,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .schedule-option p { font-size: 0.88rem; font-weight: 500; color: var(--text-secondary); }
 
 /* Form Styles */
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
 .form-group label { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); }
 .form-input {
@@ -557,8 +557,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Promo */
 .promo-apply { background: var(--surface); border: 2px solid var(--border); border-radius: 20px; padding: 1.75rem; margin-bottom: 2rem; box-shadow: var(--shadow-card); }
 .promo-apply h4 { font-family: 'Alexandria', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 1.2rem; }
-.promo-input-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
-.promo-input-row .form-input { flex: 1; margin: 0; }
+.promo-input-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.promo-input-row .form-input { flex: 1; min-width: 200px; margin: 0; }
 .promo-feedback { font-size: 0.9rem; font-weight: 700; min-height: 22px; margin-bottom: 0.5rem;}
 .promo-feedback.success { color: var(--success); }
 .promo-feedback.error { color: var(--danger); }
@@ -574,7 +574,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .summary-row.discount { color: var(--success); }
 
 /* Payment */
-.payment-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+.payment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
 .payment-card { background: var(--surface); border: 2px solid var(--border); border-radius: 20px; padding: 1.75rem; cursor: pointer; text-align: center; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .payment-card:hover { border-color: var(--blue-3); transform: translateY(-3px); box-shadow: var(--shadow-card); }
 .payment-card.active { border-color: var(--blue-2); background: var(--bg-3); box-shadow: 0 0 0 4px rgba(0,112,243,0.15); }
@@ -595,8 +595,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .success-ripple { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--blue-3); animation: ripple 2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite; }
 .success-ripple.delay { animation-delay: 0.5s; }
 @keyframes ripple { to{width:200px;height:200px;opacity:0} }
-.success-title { font-family: 'Alexandria', sans-serif; font-size: 2.4rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-primary); }
-.success-sub { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; font-weight: 500; }
+.success-title { font-family: 'Alexandria', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; color: var(--text-primary); }
+.success-sub { color: var(--text-secondary); margin-bottom: 2rem; font-size: clamp(0.95rem, 2vw, 1.1rem); font-weight: 500; }
 .success-order-id { background: var(--bg-3); border: 2px dashed var(--blue-2); border-radius: 12px; padding: 1rem 2rem; display: inline-block; margin-bottom: 2rem; font-size: 1.05rem; font-family: 'Alexandria', sans-serif; }
 .success-details { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2.5rem; }
 .success-detail-chip { background: var(--surface); border: 1.5px solid var(--border); border-radius: 99px; padding: 0.5rem 1.2rem; font-size: 0.9rem; font-weight: 700; box-shadow: var(--shadow-card); }
@@ -604,8 +604,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ============================================================
    SERVICES SECTION
    ============================================================ */
-/* Desktop minmax fixed from 320px to 260px to prevent overflow */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
+/* Fluid Minimum for dynamic screens */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(250px, 25vw, 300px), 1fr)); gap: clamp(1.5rem, 3vw, 2rem); }
 .service-card {
   background: var(--surface-trans); backdrop-filter: blur(10px);
   border: 1.5px solid var(--border);
@@ -635,8 +635,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ============================================================
    STORES SECTION
    ============================================================ */
-/* Desktop minmax fixed from 340px to 260px */
-.stores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; }
+.stores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
 .store-card {
   background: var(--surface-trans); backdrop-filter: blur(10px);
   border: 1.5px solid var(--border);
@@ -664,7 +663,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .store-map-btn:hover { background: var(--gradient); color: white; border-color: transparent; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,112,243,0.3); }
 
 /* ============================================================
-   PROMOS SECTION
+   PROMOS SECTION (Draggable)
    ============================================================ */
 .promos-scroll-wrap {
   overflow: hidden;
@@ -675,15 +674,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth;
   padding: 1rem 0.5rem; scrollbar-width: none;
   -webkit-overflow-scrolling: touch; flex: 1;
+  cursor: grab;
 }
+.promos-scroll-track.active { cursor: grabbing; }
 .promos-scroll-track::-webkit-scrollbar { display: none; }
 
 .promo-card {
-  flex: 0 0 300px; border-radius: 26px; overflow: hidden;
+  flex: 0 0 clamp(260px, 30vw, 300px); border-radius: 26px; overflow: hidden;
   border: 1.5px solid var(--border); background: var(--surface-trans); backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer;
   position: relative;
+  pointer-events: none; /* Let drag flow through to track */
 }
+.promos-scroll-track:not(.active) .promo-card { pointer-events: auto; }
 .promo-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--blue-3); z-index: 2; }
 .promo-card-media { height: 190px; overflow: hidden; position: relative; border-bottom: 1.5px solid var(--border); }
 .promo-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
@@ -728,8 +731,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .terms-tab.active { background: var(--gradient); color: white; border-color: transparent; box-shadow: 0 6px 20px rgba(0,112,243,0.25); transform: translateY(-2px); }
 .terms-tab:hover:not(.active) { border-color: var(--blue-3); color: var(--blue-2); transform: translateY(-2px); box-shadow: var(--shadow-card); }
 
-.terms-body { animation: fadeSlideIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border-radius: 28px; padding: 2.5rem; box-shadow: var(--shadow-lg); }
-.terms-section { background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem; transition: all 0.3s; box-shadow: var(--shadow-card); }
+.terms-body { animation: fadeSlideIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: var(--shadow-lg); }
+.terms-section { background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; padding: clamp(1.2rem, 3vw, 2rem); margin-bottom: 1.5rem; transition: all 0.3s; box-shadow: var(--shadow-card); }
 .terms-section:hover { border-color: var(--blue-3); transform: translateX(5px); }
 .terms-section h3 { display: flex; align-items: center; gap: 0.85rem; font-family: 'Alexandria', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 0.85rem; color: var(--text-primary); }
 .terms-section h3 i { color: var(--blue-2); font-size: 1.3rem; }
@@ -738,8 +741,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ============================================================
    HELP & SUPPORT SECTION
    ============================================================ */
-.help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
-.help-contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
+.help-contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
 .help-card {
   background: var(--surface-trans); backdrop-filter: blur(10px); border: 1.5px solid var(--border);
   border-radius: 24px; padding: 2rem 1.5rem; text-align: center;
@@ -773,7 +776,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .faq-item.open .faq-answer { max-height: 300px; }
 
 /* Contact Form */
-.contact-form-section { padding: 3rem; border-radius: 32px; box-shadow: var(--shadow-lg); }
+.contact-form-section { padding: clamp(1.5rem, 4vw, 3rem); border-radius: 32px; box-shadow: var(--shadow-lg); }
 .contact-form-section h3 { font-family: 'Alexandria', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem; }
 
 /* ============================================================
@@ -781,8 +784,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ============================================================ */
 .footer { background: var(--surface-trans); backdrop-filter: blur(20px); border-top: 1.5px solid var(--border); margin-top: 6rem; position: relative; overflow: hidden; box-shadow: 0 -10px 40px rgba(0,0,0,0.02); }
 .footer-glow { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(0,112,243,0.1), transparent 70%); pointer-events: none; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding: 5rem 4rem 4rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-.footer-brand { max-width: 320px; }
+.footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4rem; padding: 5rem 4rem 4rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+.footer-brand { grid-column: span 1; max-width: 320px; }
+@media(min-width: 1100px){ .footer-brand { grid-column: span 2; } } /* Wider brand on big screens */
 .footer-logo { width: 56px; height: 56px; border-radius: 16px; object-fit: cover; margin-bottom: 0.75rem; box-shadow: var(--shadow); }
 .footer-logo-text { font-family: 'Alexandria', sans-serif; font-size: 1.7rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: 1rem; }
 .footer-tagline { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.75rem; }
@@ -818,7 +822,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .bubblebot-chat {
   position: absolute; bottom: 85px; right: 0;
-  width: 380px;
+  width: clamp(300px, 90vw, 380px);
   border-radius: 28px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.15); overflow: hidden;
   display: none; flex-direction: column;
@@ -884,40 +888,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .delay-4 { animation-delay: 0.6s; }
 .delay-5 { animation-delay: 0.75s; }
 
-/* Intersection observer trigger */
 .reveal { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 
-
 /* ============================================================
-   RESPONSIVE (DESKTOP / TABLETS)
-   ============================================================ */
-@media (max-width: 1100px) {
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; padding: 4rem 3rem 3rem; }
-  .footer-bottom { padding: 1.5rem 3rem; }
-}
-
-@media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-  .hero-image { display: none; }
-  .hero-sub { margin: 0 auto 2.5rem; }
-  .hero-btns { justify-content: center; }
-  .hero-stats { justify-content: center; }
-  .bubblebot-card { grid-template-columns: 1fr; padding: 3rem 2rem; text-align: center; }
-  .bubblebot-features { justify-items: center; }
-  .bubblebot-img { display: none; }
-  .app-download-banner { padding: 4rem 2rem; }
-  .help-grid { grid-template-columns: 1fr; }
-  .store-select-grid { grid-template-columns: 1fr; }
-}
-
-/* ============================================================
-   MOBILE RESPONSIVE FIXES (Replaces old max-width: 768px block)
+   MOBILE RESPONSIVE ALIGNMENTS
    ============================================================ */
 @media (max-width: 768px) {
-  /* Fix Typography & Center Alignments */
   .section-header { text-align: center; }
-  .section-title { font-size: 2.2rem; }
   .hero-title { font-size: clamp(2.2rem, 8vw, 2.8rem); }
 
   /* Navbar Adjustments */
@@ -925,69 +903,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-links.open { display: flex; animation: fadeSlideIn 0.3s ease; }
   .hamburger { display: flex; }
   .nav-cta { display: none; }
-  .section { padding: 6rem 1.2rem 3rem; }
-
-  /* 1. Fix App Screens Missing / Blank Void */
-  .app-download-banner { padding: 3rem 1.5rem; gap: 2rem; }
-  .app-showcase {
-    flex-wrap: nowrap !important; /* Forces horizontal layout */
+  
+  /* Promos / App Screens (Mobile Snap) */
+  .app-showcase, .promos-scroll-track {
+    flex-wrap: nowrap !important;
     overflow-x: auto;
     justify-content: flex-start;
     padding: 1rem 0 2rem 0;
-    scroll-snap-type: x mandatory; /* Smooth snapping */
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    width: 100%;
   }
-  .app-showcase::-webkit-scrollbar { display: none; }
-  .app-screen-wrap {
-    flex: 0 0 80%; /* Takes up 80% of screen, shows peek of next screen */
-    scroll-snap-align: center;
-  }
-  .app-screen { width: 100%; max-width: 260px; border-width: 4px; }
+  .app-showcase::-webkit-scrollbar, .promos-scroll-track::-webkit-scrollbar { display: none; }
+  .app-screen-wrap, .promo-card { scroll-snap-align: center; }
+  .promo-scroll-btn { display: none; }
 
-  /* 2. Fix Order in 5 Easy Steps Stacking */
+  /* Wizard Mobile Fixes */
   .order-steps {
-    flex-wrap: nowrap !important; /* Stops wrapping to new lines */
+    flex-wrap: nowrap !important;
     overflow-x: auto;
     justify-content: flex-start;
-    padding: 1rem;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .order-steps::-webkit-scrollbar { display: none; }
-  .order-step { min-width: 70px; flex-shrink: 0; }
-  .order-step-line { min-width: 25px; flex-shrink: 0; }
-  .order-panel { padding: 2rem 1.2rem; }
-
-  /* 3. Fix Distorted / Long Cards */
-  .services-grid, .stores-grid { 
-    grid-template-columns: 1fr; /* Forces exactly 1 column on phones */
-    gap: 1.5rem; 
-  }
-  .service-card-img, .store-img-wrap { 
-    height: 180px; /* Reduces image height so cards aren't overly tall */
-  }
-  .service-select-grid { grid-template-columns: 1fr; }
-
-  /* 4. Fix Promos Cutting Off */
-  .promos-scroll-track {
-    padding: 1rem 0.5rem;
     scroll-snap-type: x mandatory;
   }
-  .promo-card {
-    flex: 0 0 85%; /* Perfectly fits phone screen */
-    scroll-snap-align: center; /* Snaps exactly to the middle */
-  }
-  .promo-scroll-btn { display: none; } /* Hide arrows on mobile; swiping is better */
+  .order-steps::-webkit-scrollbar { display: none; }
+  .order-step { min-width: 70px; flex-shrink: 0; scroll-snap-align: start;}
+  .order-step-line { min-width: 25px; flex-shrink: 0; }
 
   /* Footer & Misc Fixes */
-  .footer-top { grid-template-columns: 1fr; padding: 3rem 1.5rem 2.5rem; gap: 2rem; }
+  .footer-top { padding: 3rem 1.5rem 2.5rem; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; padding: 1.5rem; }
-  .payment-grid { grid-template-columns: 1fr; }
-  .help-contact-cards { grid-template-columns: 1fr; }
   .bubblebot-chat { width: calc(100vw - 2.4rem); right: 0; }
-  .form-row { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
