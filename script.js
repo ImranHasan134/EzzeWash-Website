@@ -1,6 +1,6 @@
 /* ============================================================
    EZZEWASH — Full Website JavaScript
-   Upgraded: Dynamic Bubbles, Smooth Transitions
+   Upgraded: Dynamic Bubbles, Smooth Transitions, Parallax, Drag Sliders
    ============================================================ */
 
 // ---- Data ----
@@ -50,7 +50,7 @@ let orderData = { service: null, store: null, scheduleType: 'pickup', qty: 1, we
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  initBubbles(); // Add global dynamic background bubbles
+  initBubbles();
   initNav();
   renderServicesSection();
   renderServiceSelectGrid();
@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initOrderSummary();
   setMinDate();
+  
+  // Dynamic Enhancements
+  initHeroParallax();
+  initDraggableSliders();
 });
 
 // ============================================================
@@ -69,27 +73,79 @@ document.addEventListener('DOMContentLoaded', () => {
 function initBubbles() {
   const container = document.getElementById('bg-bubbles');
   if (!container) return;
-  const bubbleCount = window.innerWidth > 768 ? 15 : 8; // Less bubbles on mobile for performance
+  const bubbleCount = window.innerWidth > 768 ? 15 : 8;
   for (let i = 0; i < bubbleCount; i++) {
     const bubble = document.createElement('div');
     bubble.className = 'bg-bubble';
     
-    // Randomize size between 30px and 100px
     const size = Math.random() * 70 + 30;
     bubble.style.width = `${size}px`;
     bubble.style.height = `${size}px`;
-    
-    // Randomize horizontal position
     bubble.style.left = `${Math.random() * 100}vw`;
-    
-    // Randomize animation duration between 12s and 25s
     bubble.style.animationDuration = `${Math.random() * 13 + 12}s`;
-    
-    // Randomize animation delay
     bubble.style.animationDelay = `${Math.random() * 10}s`;
     
     container.appendChild(bubble);
   }
+}
+
+// ============================================================
+// DYNAMIC HERO PARALLAX
+// ============================================================
+function initHeroParallax() {
+  const wrap = document.querySelector('.hero-img-wrap');
+  if (!wrap) return;
+  document.addEventListener('mousemove', (e) => {
+    if (window.innerWidth < 900) {
+      wrap.style.transform = 'none'; // Disable on mobile to prevent jitter
+      return;
+    }
+    const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+    const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+    wrap.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+  });
+  
+  // Reset on leave to maintain standard styling
+  document.querySelector('.hero').addEventListener('mouseleave', () => {
+    if (window.innerWidth >= 900) {
+      wrap.style.transform = `rotateY(-5deg) rotateX(2deg)`;
+    }
+  });
+}
+
+// ============================================================
+// DRAGGABLE SLIDERS (PROMOS & APP SHOWCASE)
+// ============================================================
+function initDraggableSliders() {
+  const sliders = [document.getElementById('promoTrack'), document.querySelector('.app-showcase')];
+  sliders.forEach(slider => {
+    if (!slider) return;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // Scroll speed multiplier
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  });
 }
 
 // ============================================================
@@ -193,8 +249,6 @@ function renderPromos() {
 function initHomePromos() {
   const track = document.getElementById('homePromoTrack');
   if (!track) return;
-  // CSS based infinite scroll logic is handled in style.css or embedded logic
-  // For safety, providing the duplicate nodes if the container exists
   const cards = PROMOS.map(p => promoCardHTML(p, true)).join('');
   track.innerHTML = cards + cards + cards;
 }
@@ -303,7 +357,6 @@ function changeWeight(delta) {
 
 function fillPromo(code) {
   document.getElementById('promoInput').value = code;
-  // auto apply to make it more premium
   applyPromo();
 }
 
@@ -601,5 +654,5 @@ function showToast(message, type = 'success') {
   toast.className = `toast ${type}`;
   toast.innerHTML = `<i class="fas ${icons[type] || icons.success}"></i><span>${message}</span>`;
   document.body.appendChild(toast);
-  setTimeout(() => { if(toast) toast.remove() }, 3400); // Wait for animations to finish
+  setTimeout(() => { if(toast) toast.remove() }, 3400); 
 }
